@@ -8,19 +8,7 @@ vim.g.have_nerd_font = false
 
 require 'settings'
 require 'keymaps'
-
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
+require 'autocommands'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -72,6 +60,9 @@ require('lazy').setup({
     },
   },
 })
-
+-- experimental
+vim.g.markdown_fenced_languages = {
+  'ts=typescript',
+}
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
