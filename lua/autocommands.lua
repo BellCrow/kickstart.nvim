@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
         target = vim.fn.fnamemodify(arg, ':p')
         print(string.format('Changing CWD from %s to %s', from, arg))
 
-        if target ~= nil then
+        if target ~= nil and vim.fn.isdirectory(target) ~= 0 then
           vim.cmd(string.format(':cd %s', target))
           vim.notify(string.format('cd to %s', target))
         end
